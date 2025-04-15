@@ -17,8 +17,6 @@ public class ColoniaDeVacaciones : MonoBehaviour
     void Start()
     {
 
-        profesTotales = cantProfesoresJ + cantProfesoresI;
-
         if (cantInfantiles < 0  || cantInfantiles > 100) {
             Debug.Log("Valores invalidos para los infantiles");
             return;
@@ -28,9 +26,17 @@ public class ColoniaDeVacaciones : MonoBehaviour
             return;
         }
 
-        cantCoordinadores = profesTotales/5;
+        
+
         cantProfesoresI = cantInfantiles / 10;
         cantProfesoresJ = cantJuveniles / 20;
+
+        profesTotales = cantProfesoresJ + cantProfesoresI;
+        cantCoordinadores = profesTotales / 5;
+
+        if (profesTotales % 5 > 0) {
+            cantCoordinadores = cantCoordinadores + 1;
+        }
 
         listaEspera = (cantInfantiles % 10) + (cantJuveniles % 20);
 
